@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+public class KBCGame {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        String[][] questions = {
+            {"What is the capital of India?", "A) Mumbai", "B) Delhi", "C) Kolkata", "D) Chennai", "B"},
+            {"Which river is known as the 'Ganga of the South'?", "A) Godavari", "B) Krishna", "C) Kaveri", "D) Narmada", "C"},
+            {"Who was the first Prime Minister of India?", "A) Mahatma Gandhi", "B) Sardar Patel", "C) Jawaharlal Nehru", "D) Indira Gandhi", "C"},
+            {"What is the national animal of India?", "A) Lion", "B) Tiger", "C) Elephant", "D) Peacock", "B"},
+            {"Which Indian state has the longest coastline?", "A) Gujarat", "B) Tamil Nadu", "C) Andhra Pradesh", "D) Maharashtra", "A"},
+            {"Virat Kohli is associated with which sport?", "A) Football", "B) Cricket", "C) Tennis", "D) Badminton", "B"},
+            {"In which year did Narendra Modi become the Prime Minister of India?", "A) 2010", "B) 2012", "C) 2014", "D) 2016", "C"},
+            {"Shri Krishna is a major deity in which religion?", "A) Buddhism", "B) Jainism", "C) Sikhism", "D) Hinduism", "D"},
+            {"Which scripture is considered the holiest in Hinduism?", "A) Quran", "B) Bible", "C) Bhagavad Gita", "D) Guru Granth Sahib", "C"}
+        };
+
+        int prizeMoney = 0;
+        boolean isGameOver = false;
+
+        System.out.println("Welcome to KBC!");
+
+        for (int i = 0; i < questions.length && !isGameOver; i++) {
+            System.out.println("Question " + (i + 1) + ": " + questions[i][0]);
+            for (int j = 1; j <= 4; j++) {
+                System.out.println(questions[i][j]);
+            }
+
+            System.out.print("Enter your answer (A/B/C/D): ");
+            String answer = scanner.nextLine().toUpperCase();
+
+            if (answer.equals(questions[i][5])) {
+                prizeMoney += 10000; // Increment prize money by 10,000 rupees for each correct answer
+                System.out.println("Correct! You have won Rs" + prizeMoney);
+            } else {
+                System.out.println("Wrong answer! Game Over.");
+                isGameOver = true;
+            }
+
+            System.out.println();
+        }
+
+        System.out.println("You have won a total of Rs" + prizeMoney);
+        scanner.close();
+    }
+}
